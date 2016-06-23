@@ -1,0 +1,22 @@
+#!/bin/sh
+
+start()
+{
+  local self="`realpath "$0"`"
+  local base="`dirname -- "$self"`"
+
+  source "$base/../env" &&
+  merge_environment /srv || return 255
+
+  cd "$PACKAGE_ROOT" &&
+  su -c 'exec ./hello' nobody
+  
+  local rv="$?"
+  sleep 10
+
+  return "$rv"
+}
+
+start
+exit "$?"
+

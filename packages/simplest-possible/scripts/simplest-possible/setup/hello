@@ -1,0 +1,25 @@
+#!/bin/sh
+
+run()
+{
+  local self="`realpath "$0"`"
+  local base="`dirname -- "$self"`"
+
+  source "$base/../env" &&
+  merge_environment /srv || return 255
+
+  echo "Hello, ${WORLD}!"
+  echo 'Hello, setup script!'
+
+  return "$?"
+}
+
+main()
+{
+  run "$@"
+  return "$?"
+}
+
+main "$@"
+exit "$?"
+

@@ -1,0 +1,27 @@
+#!/bin/sh
+
+install()
+{
+  local is_update="$1"
+  shift 1
+
+  local self="`realpath "$0"`"
+  local base="`dirname -- "$self"`"
+
+  source "$base/env" &&
+  merge_environment /srv || return 255
+
+  if [ "$is_update" ]; then
+    echo "Hello, software updates!"
+  else
+    echo "Hello, software installation!"
+  fi
+
+  echo "I have version $PACKAGE_VERSION; hope that's right."
+
+  return "$?"
+}
+
+install "$@"
+exit "$?"
+
