@@ -86,6 +86,33 @@ Then, on the Medic OS system, run:
 $ sudo package-update simplest-possible-*.vpkg
 ```
 
+### Installation Artifacts
+
+After installation, running `sudo supervisor-inspect` will show you
+information about a new service:
+
+```
+Package 'simplest-possible':
+  Service 'hello':
+    Status: Up
+    Up: 451 seconds, Restarts: 0
+    Attributes: watched, running, expected
+    Service PID: 1759, Supervisor PID: 1741
+```
+
+You'll also see new files beneath `/srv/system`; these record information
+about what version of the package was used, and where it placed files:
+
+```
+$ ls -al /srv/system/storage/receipts/simplest-possible
+-rw-r--r--    1 root     root           764 Jun 27 17:26 manifest
+-rw-r--r--    1 root     root             5 Jun 27 17:26 version
+```
+
+These are maintained automatically by the packaging system and do
+not require any explicit action from a package installation or setup
+script.
+
 ### Removing
 
 To remove the package, run the following command on the Medic OS
@@ -118,34 +145,6 @@ package's `tar` archive; these are automatically added to the package's
 If you run `sudo supervisor-inspect` after removing the package, you'll
 notice that it's missing from the list. Services always belong to a package,
 and services are always automatically stopped prior to package removal.
-
-
-### Installation Artifacts
-
-After installation, running `sudo supervisor-inspect` will show you
-information about a new service:
-
-```
-Package 'simplest-possible':
-  Service 'hello':
-    Status: Up
-    Up: 451 seconds, Restarts: 0
-    Attributes: watched, running, expected
-    Service PID: 1759, Supervisor PID: 1741
-```
-
-You'll also see new files beneath `/srv/system`; these record information
-about what version of the package was used, and where it placed files:
-
-```
-$ ls -al /srv/system/storage/receipts/simplest-possible
--rw-r--r--    1 root     root           764 Jun 27 17:26 manifest
--rw-r--r--    1 root     root             5 Jun 27 17:26 version
-```
-
-These are maintained automatically by the packaging system and do
-not require any explicit action from a package installation or setup
-script.
 
 ## Gory Details
 
