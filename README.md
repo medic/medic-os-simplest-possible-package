@@ -6,6 +6,10 @@ install cleanly to Medic OS installations, and print/log various
 strings in various places to demonstrate features of the packaging
 system.
 
+This package is architecture-independent, and should be able to be
+built and/or used on any supported system, regardless of CPU or
+software/hardware architecture.
+
 ## Trying It Out
 
 ### Building
