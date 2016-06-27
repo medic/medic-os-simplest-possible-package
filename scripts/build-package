@@ -48,7 +48,7 @@ main()
   fi
 
   # Clear package staging directory
-  rm -rf "$staging_dir" && mkdir -p "$staging_dir" &&
+  mkdir -p "$staging_dir" && rm -rf "$staging_dir"/* &&
   \
   # Gather and compress package contents
   (cd "packages/$package" &&
