@@ -21,7 +21,7 @@ merge_environment()
   export PATH="$root/bin:$root/sbin:$PATH"
   export LD_LIBRARY_PATH="$root/lib:$LD_LIBRARY_PATH"
 
-  export HELLO='configuration data!'
+  export WORLD='configuration data!'
   return 0
 }
 

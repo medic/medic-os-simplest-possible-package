@@ -1,4 +1,8 @@
 #!/bin/sh
 
-echo 'Hello, software!'
+while true; do
+  echo 'Hello, software!'
+  echo "The time is now `date -u +'%Y-%m-%dT%H:%M:%SZ'`" >&2
+  sleep 60
+done
 

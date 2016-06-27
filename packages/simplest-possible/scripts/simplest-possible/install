@@ -18,7 +18,6 @@ install()
   fi
 
   echo "I have version $PACKAGE_VERSION; hope that's right."
-
   return "$?"
 }
 
