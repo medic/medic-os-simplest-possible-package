@@ -19,7 +19,7 @@ This build process requires a working `make` (BSD or GNU) and `shasum`.
 A copy of GNU `ar` is required. On most systems, this will be contained
 in the `binutils` package. On Mac OS X, the default system `ar` will not
 work; consider installing `binutils` from [Homebrew](http://brew.sh) and
-adding `/Utilities/Homebrew/Cellar/binutils/*/*/bin` to your `$PATH`.
+adding `$HOMEBREW_DIR/Cellar/binutils/*/*/bin` to your `$PATH`.
 
 To build the package:
 
