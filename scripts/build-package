@@ -47,6 +47,19 @@ main()
     usage
   fi
 
+  local ar_command=''
+  local ar_command_options='gar ar'
+
+  for cmd in $ar_command_options; do
+    if [ "`which "$cmd"`" ]; then
+      ar_command="$cmd"; break
+    fi
+  done
+
+  if [ -z "$ar_command" ]; then
+    fatal 'This script requires a GNU-compatible `ar` in your $PATH'
+  fi
+
   # Clear package staging directory
   mkdir -p "$staging_dir" && rm -rf "$staging_dir"/* &&
   \
@@ -74,7 +87,7 @@ main()
   \
   # Combine data and metadata to produce package
   (cd "$staging_dir" &&
-    ar -rcs "../../../output/packages/$package_name" *) &&
+    "$ar_command" -rcs "../../../output/packages/$package_name" *) &&
 
   if [ "$?" -ne 0 ]; then
     fatal "Package creation step for '$package' failed"
