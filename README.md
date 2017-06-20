@@ -14,12 +14,20 @@ software/hardware architecture.
 
 ### Building
 
-This build process requires a working `make` (BSD or GNU) and `shasum`.
+This build process requires a working `make` (BSD or GNU), `shasum`,
+`ar`, and `xz`.
 
-A copy of GNU `ar` is required. On most systems, this will be contained
-in the `binutils` package. On Mac OS X, the default system `ar` will not
-work; consider installing `binutils` from [Homebrew](http://brew.sh) and
-adding `$HOMEBREW_DIR/Cellar/binutils/*/*/bin` to your `$PATH`.
+A copy of **GNU** `ar` is required. Other non-GNU versions of `ar` will
+not work. On most systems, this will be contained in the `binutils` package.
+On Mac OS X, the default system `ar` will _definitely_ not work. To obtain
+the required dependencies, install [Homebrew](http://brew.sh), then run:
+```shell
+$ brew install binutils xz
+```
+
+The build script will prefer `gar` over `ar`, as Homebrew uses this program
+prefix. It will fall back to `ar` in environments that don't provide this
+program prefix.
 
 To build the package:
 
